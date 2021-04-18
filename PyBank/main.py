@@ -54,7 +54,10 @@ with open(csvpath, newline="") as csvfile:
 # The greatest decrease in losses (date and amount) over the entire period
         increase = max(changes)
         decrease = min(changes)
-
+        if row[1] == increase:
+            grt_inc = row[0]
+        if row[1] == decrease:
+            grt_dec = row[0]
 
 # Open the file using "write" mode. 
 with open(output_path, 'w', newline='') as text:
