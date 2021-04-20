@@ -43,11 +43,19 @@ with open(csvpath, newline="") as csvfile:
             Licount +=1
         elif (candidate == "O'Tooley"):
             OTooleycount +=1
+
 # A complete list of candidates who received votes
-
+    candidates_list = {Correycount:"Correy", Khancount:"Khan", Licount:"Li", OTooleycount:"O'Tooley"}
+    
 # The percentage of votes each candidate won
-
+    Correypercent = (Correycount / total) * 100
+    Khanpercent = (Khancount / total) * 100
+    Lipercent = (Licount / total) * 100
+    OTooleypercent = (OTooleycount / total) * 100
 # The total number of votes each candidate won
 
 # The winner of the election based on popular vote.
+    def winner(candidates):
+        return max(set(candidates), key = candidates.count)
+
 # print(f"Total votes: {}")
