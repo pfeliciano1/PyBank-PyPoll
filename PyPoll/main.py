@@ -56,6 +56,20 @@ with open(csvpath, newline="") as csvfile:
 
 # The winner of the election based on popular vote.
     def winner(candidates):
-        return max(set(candidates), key = candidates.count)
+        return max(set(candidates))
 
-# print(f"Total votes: {}")
+# print the analysis to the terminal
+    print("Election Results")
+    print("----------------------------")
+    print(f"Total votes: {total}")
+    print("----------------------------")
+    print(f"Khan: %{Khanpercent:.2f} ({Khancount})")
+    print(f"Correy: %{Correypercent:.2f} ({Correycount})")
+    print(f"Li: %{Lipercent:.2f} ({Licount})")
+    print(f"O'Tooley: %{OTooleypercent:.2f} ({OTooleycount})")
+    print("----------------------------")
+    print(f"Winner: ({winner})")
+    print("----------------------------")
+
+# export a text file with the results.
+
