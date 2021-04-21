@@ -18,7 +18,6 @@ output_path = os.path.join("..", "analysis", "financial_analysis.txt")
 # Naming the lists and variables
 date = []
 prof_loss = []
-num_months = 0
 total = 0
 changes = 0
 total_changes = 0
@@ -38,7 +37,7 @@ with open(csvpath, newline="") as csvfile:
         prof_loss.append(row[1])
 
 # The total number of months included in the dataset
-        num_months += 1
+        # num_months += 1
 # The net total amount of "Profit/Losses" over the entire period
         total += int(row[1])
 # Calculate the changes in "Profit/Losses" over the entire period, 
@@ -49,26 +48,23 @@ with open(csvpath, newline="") as csvfile:
         total_changes += changes
         
 # then find the average of those changes
-        avg_changes = total_changes / num_months
+        avg_changes = total_changes / (len(date))
     
 # The greatest increase in profits (date and amount) over the entire period
 # The greatest decrease in losses (date and amount) over the entire period
-        increase = max(changes)
-        decrease = min(changes)
-        if row[1] == increase:
-            grt_inc = row[0]
-        if row[1] == decrease:
-            grt_dec = row[0]
+    # increase = max(changes)
+    # decrease = min(changes)
+    # grt_inc = changes.index(max(changes))+1
+    # grt_dec = changes.index(min(changes))+1
 
-        
 
-print("Financial Analysis")
-print("------------------------------------")
-print(f'Total Months: {len(months)}')
-print(f'Total: ${total}')
-print(f'Average Change: ${avg_changes:.2f}')
-print(f'Greatest Increase in Profits: {grt_inc} ({increase})')
-print(f'Greatest Decrease in Profits: {grt_dec} ({decrease})')
+    print("Financial Analysis")
+    print("------------------------------------")
+    print(f'Total Months: {len(date)}')
+    print(f'Total: ${total}')
+    print(f'Average Change: ${avg_changes:.2f}')
+    # print(f'Greatest Increase in Profits: {grt_inc} ({increase})')
+    # print(f'Greatest Decrease in Profits: {grt_dec} ({decrease})')
 
 # Open the file using "write" mode. 
 # with open(output_path, 'w', newline='') as text:
