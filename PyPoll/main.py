@@ -55,8 +55,7 @@ with open(csvpath, newline="") as csvfile:
 # The total number of votes each candidate won
 
 # The winner of the election based on popular vote.
-    def winner(candidates):
-        return max(set(candidates))
+    winner = max(candidates_list, key= lambda x: candidates_list[x])
 
 # print the analysis to the terminal
     print("Election Results")
