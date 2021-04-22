@@ -52,10 +52,10 @@ with open(csvpath, newline="") as csvfile:
     Khanpercent = (Khancount / total) * 100
     Lipercent = (Licount / total) * 100
     OTooleypercent = (OTooleycount / total) * 100
-# The total number of votes each candidate won
 
 # The winner of the election based on popular vote.
-    winner = max(candidates_list, key= lambda x: candidates_list[x])
+    values_list = list(candidates_list.values())
+    winner = max(set(values_list), key=values_list.count)
 
 # print the analysis to the terminal
     print("Election Results")
@@ -67,8 +67,9 @@ with open(csvpath, newline="") as csvfile:
     print(f"Li: %{Lipercent:.2f} ({Licount})")
     print(f"O'Tooley: %{OTooleypercent:.2f} ({OTooleycount})")
     print("----------------------------")
-    print(f"Winner: ({winner})")
+    print(f"Winner: {winner}")
     print("----------------------------")
 
 # export a text file with the results.
+
 
