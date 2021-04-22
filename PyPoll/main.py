@@ -71,5 +71,15 @@ with open(csvpath, newline="") as csvfile:
     print("----------------------------")
 
 # export a text file with the results.
-
-
+with open(output_path, 'w') as text:
+    text.write("Election Results\n")
+    text.write("----------------------------\n")
+    text.write(f"Total votes: {total}\n")
+    text.write("----------------------------\n")
+    text.write(f"Khan: %{Khanpercent:.2f} ({Khancount})\n")
+    text.write(f"Correy: %{Correypercent:.2f} ({Correycount})\n")
+    text.write(f"Li: %{Lipercent:.2f} ({Licount})\n")
+    text.write(f"O'Tooley: %{OTooleypercent:.2f} ({OTooleycount})\n")
+    text.write("----------------------------\n")
+    text.write(f"Winner: {winner}\n")
+    text.write("----------------------------\n")
