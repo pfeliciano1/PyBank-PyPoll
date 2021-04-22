@@ -67,7 +67,11 @@ with open(csvpath, newline="") as csvfile:
     # print(f'Greatest Decrease in Profits: {grt_dec} ({decrease})')
 
 # Open the file using "write" mode. 
-# with open(output_path, 'w', newline='') as text:
-
-#     # Initialize csv.writer
-#     csvwriter = csv.writer(csvfile, delimiter=',')
+with open(output_path, 'w') as text:
+    text.write("Financial Analysis\n")
+    text.write(f'------------------------------------\n')
+    text.write(f'Total Months: {len(date)}\n')
+    text.write(f'Total: ${total}\n')
+    text.write(f'Average Change: ${avg_changes:.2f}\n')
+    #   text.write(f'Greatest Increase in Profits: {Greatest_Increase} ({increase})\n')
+    #   text.write(f'Greatest Increase in Profits: {Greatest_Decrease} ({decrease})\n')
