@@ -1,11 +1,3 @@
-# Your task is to create a Python script that analyzes the records to calculate each of the following:
-
-# The total number of months included in the dataset
-# The net total amount of "Profit/Losses" over the entire period
-# Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
-# The greatest increase in profits (date and amount) over the entire period
-# The greatest decrease in losses (date and amount) over the entire period
-
 # Import modules (os,csv)
 import os
 import csv
@@ -22,8 +14,8 @@ total = 0
 changes = 0
 total_changes = 0
 previous = 0
-# grt_inc =
-# grt_dec =
+grt_inc = 0
+grt_dec = 0
 changes_list = []
 
 # Opening the path using "reader" mode.
@@ -37,8 +29,6 @@ with open(csvpath, newline="") as csvfile:
         # Add profit and losses
         prof_loss.append(row[1])
 
-# The total number of months included in the dataset
-        # num_months += 1
 # The net total amount of "Profit/Losses" over the entire period
         total += int(row[1])
 # Calculate the changes in "Profit/Losses" over the entire period, 
@@ -50,33 +40,32 @@ with open(csvpath, newline="") as csvfile:
         
         changes_list.append(changes)
 # then find the average of those changes
-        avg_changes = total_changes / (len(date))
+        avg_changes = total_changes / len(date)
 
 # The greatest increase in profits (date and amount) over the entire period
-# The greatest decrease in losses (date and amount) over the entire period
-    increase = max(changes_list)
-    decrease = min(changes_list)
-    # if increase == row[1]:
-    #     grt_inc = date
-    # grt_dec = row[0]
-    # print(grt_inc)
-    # print(grt_dec)
+# The greatest decrease in losses (date and amount) over the entire period 
+        increase = max(changes_list)
+        decrease = min(changes_list)
+        if row[1] == increase:
+            grt_inc = row[0]
+        if row[1] == decrease:
+            grt_dec = row[0]
 
+# Print out the Financial Analysis
+    print("Financial Analysis")
+    print("------------------------------------")
+    print(f'Total Months: {len(date)}')
+    print(f'Total: ${total}')
+    print(f'Average Change: ${avg_changes:.2f}')
+    print(f'Greatest Increase in Profits: {grt_inc} ({increase})')
+    print(f'Greatest Decrease in Profits: {grt_dec} ({decrease})')
 
-    # print("Financial Analysis")
-    # print("------------------------------------")
-    # print(f'Total Months: {len(date)}')
-    # print(f'Total: ${total}')
-    # print(f'Average Change: ${avg_changes:.2f}')
-    # print(f'Greatest Increase in Profits: {grt_inc} ({increase})')
-    # print(f'Greatest Decrease in Profits: {grt_dec} ({decrease})')
-
-# # Open the file using "write" mode. 
-# with open(output_path, 'w') as text:
-#     text.write("Financial Analysis\n")
-#     text.write(f'------------------------------------\n')
-#     text.write(f'Total Months: {len(date)}\n')
-#     text.write(f'Total: ${total}\n')
-#     text.write(f'Average Change: ${avg_changes:.2f}\n')
-#     #   text.write(f'Greatest Increase in Profits: {grt_inc} ({increase})\n')
-#     #   text.write(f'Greatest Increase in Profits: {grt_dec} ({decrease})\n')
+# Open the file using "write" mode. 
+with open(output_path, 'w') as text:
+    text.write("Financial Analysis\n")
+    text.write(f'------------------------------------\n')
+    text.write(f'Total Months: {len(date)}\n')
+    text.write(f'Total: ${total}\n')
+    text.write(f'Average Change: ${avg_changes:.2f}\n')
+    text.write(f'Greatest Increase in Profits: {grt_inc} ({increase})\n')
+    text.write(f'Greatest Increase in Profits: {grt_dec} ({decrease})\n')
